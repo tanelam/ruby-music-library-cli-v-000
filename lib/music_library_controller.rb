@@ -109,8 +109,8 @@ def play_song(*)
      sorted = Song.all.sort_by do |song|
      song.name
      end
-      song = sorted[response-1]
-      puts "Playing #{song.name} by #{song.artist.name}"
+     song = sorted[response-1]
+     puts "Playing #{song.name} by #{song.artist.name}"
   end
 end
 
