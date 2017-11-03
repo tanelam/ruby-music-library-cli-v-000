@@ -86,32 +86,32 @@ class MusicLibraryController
       end
     end
 
-    def list_songs_by_genre(*)
-       puts "Please enter the name of a genre:"
-       response = gets.strip
+def list_songs_by_genre(*)
+ puts "Please enter the name of a genre:"
+ response = gets.strip
 
-         if genre = Genre.find_by_name(response)
-           sorted_array = genre.songs.sort_by do |song|
-            song.name
-          end
-          sorted_array.each.with_index(1) do |song, index|
-            puts "#{index}. #{song.artist.name} - #{song.name}"
-          end
-        end
-      end
+   if genre = Genre.find_by_name(response)
+     sorted_array = genre.songs.sort_by do |song|
+      song.name
+    end
+    sorted_array.each.with_index(1) do |song, index|
+    puts "#{index}. #{song.artist.name} - #{song.name}"
+    end
+  end
+end
 
-      def play_song(*)
-        puts "Which song number would you like to play?"
-        response = gets.to_i
-        number_of_songs = Song.all.size
+def play_song(*)
+  puts "Which song number would you like to play?"
+  response = gets.to_i
+  number_of_songs = Song.all.size
 
-      if response >= 1 && response <= number_of_songs
-        sorted = Song.all.sort_by do |song|
-          song.name
-        end
-          song = sorted[response-1]
-          puts "Playing #{song.name} by #{song.artist.name}"
-      end
-      end
+  if response >= 1 && response <= number_of_songs
+    sorted = Song.all.sort_by do |song|
+      song.name
+    end
+      song = sorted[response-1]
+      puts "Playing #{song.name} by #{song.artist.name}"
+  end
+end
 
 end
