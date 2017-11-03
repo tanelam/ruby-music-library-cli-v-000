@@ -61,30 +61,30 @@ class MusicLibraryController
     sorted
   end
 
-  def list_genres(*)
-    sorted = Genre.all.sort_by do |genre|
-    genre.name
-    end
-
-    sorted.each.with_index(1) do |genre, index|
-      puts "#{index}. #{genre.name}"
-    end
-    sorted
+def list_genres(*)
+  sorted = Genre.all.sort_by do |genre|
+  genre.name
   end
+
+  sorted.each.with_index(1) do |genre, index|
+  puts "#{index}. #{genre.name}"
+  end
+  sorted
+end
 
 def list_songs_by_artist(*)
-   puts "Please enter the name of an artist:"
-   response = gets.strip
+ puts "Please enter the name of an artist:"
+ response = gets.strip
 
-     if artist = Artist.find_by_name(response)
-       sorted_array = artist.songs.sort_by do |song|
-        song.name
-      end
-      sorted_array.each.with_index(1) do |song, index|
-        puts "#{index}. #{song.name} - #{song.genre.name}"
-      end
+   if artist = Artist.find_by_name(response)
+     sorted_array = artist.songs.sort_by do |song|
+      song.name
+    end
+    sorted_array.each.with_index(1) do |song, index|
+      puts "#{index}. #{song.name} - #{song.genre.name}"
     end
   end
+end
 
 def list_songs_by_genre(*)
  puts "Please enter the name of a genre:"
